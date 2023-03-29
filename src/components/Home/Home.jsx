@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SingleCard from '../SingleCard/SingleCard';
 
-const Home = () => {
+const Home = ({handleBuyNowButton}) => {
     const [products, setProducts]=useState([])
 
     useEffect(()=>{
@@ -14,7 +14,7 @@ const Home = () => {
         <div>
             <div className="product-container grid grid-cols-3 gap-4">
                 {
-                    products.map(product=><SingleCard product={product}></SingleCard>)
+                    products.map(product=><SingleCard handleBuyNowButton={handleBuyNowButton} product={product}></SingleCard>)
                 }
             </div>
         </div>

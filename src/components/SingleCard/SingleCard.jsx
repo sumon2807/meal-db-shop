@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faStar} from '@fortawesome/free-solid-svg-icons'
 
-const SingleCard = ({product}) => {
+const SingleCard = ({product, handleBuyNowButton}) => {
     const {id, name, price, img, seller, ratings}=product
     return (
         <div className=''>
@@ -25,10 +25,7 @@ const SingleCard = ({product}) => {
                     </div>
                 </div>
                 <div className="card-actions justify-center">
-                <button className="btn btn-primary w-full">
-                    Buy Now
-                    <FontAwesomeIcon icon={faShoppingCart} />
-                    </button>
+                <button onClick={()=>handleBuyNowButton(name)} className="btn btn-primary w-full">Buy Now<FontAwesomeIcon icon={faShoppingCart} /></button>
                 </div>
             </div>
         </div>
