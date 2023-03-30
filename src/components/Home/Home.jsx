@@ -2,19 +2,23 @@ import React, { useEffect, useState } from 'react';
 import SingleCard from '../SingleCard/SingleCard';
 
 const Home = ({handleBuyNowButton}) => {
-    const [products, setProducts]=useState([])
+    const [meals, setmeals]=useState([])
 
     useEffect(()=>{
-        fetch(`products.json`)
+        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=`)
         .then(res=>res.json())
-        .then(data=>setProducts(data))
+        .then(data=>setmeals(data.meals))
     },[])
 
     return (
         <div>
-            <div className="product-container grid grid-cols-3 gap-4">
+            <div className="meal-container grid grid-cols-3 gap-4">
                 {
-                    products.map(product=><SingleCard handleBuyNowButton={handleBuyNowButton} product={product}></SingleCard>)
+                    meals.map(meal=><SingleCard
+                        key={meal.idMeal}
+                        handleBuyNowButton={handleBuyNowButton} 
+                        meal={meal}
+                        ></SingleCard>)
                 }
             </div>
         </div>
